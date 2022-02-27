@@ -1,0 +1,109 @@
+//========================
+// FONTS & COLOR VARIABLES
+//========================
+
+// FONTS
+$font-light: 400;
+$font-bold: 700;
+
+// COLORS
+$pokemon-ball-red: #DA333C;
+$border: #010101;
+$main-text: #010101;
+$white: #FFF;
+$pikachu-yellow: #EBD33A;
+
+//==========================
+//GENERAL STYLES
+//==========================
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: $white;
+    color: $main-text;
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    font-weight: $font-light;
+    line-height: 1.6;
+    padding-left: 20px;
+}
+
+.page-header {
+    background-color: $pokemon-ball-red;
+    color: $white;
+    font-weight: $font-bold;
+    text-shadow: 0 1px $main-text;
+    font-size: 20px;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 300px;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-bottom: 5px solid $border;
+
+    a,
+    a:visited,
+    a:active {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+main {
+    display: flex;
+    padding-top: 140px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+//=============================
+// NAVIGATION
+//=============================
+
+.logo {
+    height: 80px;
+    margin-bottom: 0;
+}
+
+.page-header__logo-item {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    justify-content: flex-start;
+}
+
+.page-header__nav-item {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 80px;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+//=============================
+// MAIN
+//=============================
+
+.pokemon-name {
+    font-weight: bold;
+}
