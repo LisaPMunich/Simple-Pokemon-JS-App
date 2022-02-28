@@ -45,7 +45,9 @@ body {
 }
 
 main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
   padding-top: 140px;
 }
 
@@ -79,5 +81,11 @@ h1 {
 .pokemon-name {
   font-weight: bold;
 }
+
+/* .pokemon-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+} */
 
 /*# sourceMappingURL=styles.css.map */

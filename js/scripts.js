@@ -9,13 +9,17 @@ let pokemonList = [
 
 //DISPLAY NAME AND HEIGHT OF POKEMONS IN DOM
 for (let i = 0; i < pokemonList.length; i++) {
-    document.write(pokemonList[i].name + ' (height: ' + (pokemonList[i].height) + 'm)');
+    document.write('<p>' + pokemonList[i].name)
+
+    if (pokemonList[i].height){
+        document.write(' (height: ' + (pokemonList[i].height) + 'm)')
+    }
 
     if (pokemonList[i].height > 0.8) {
         document.write(' => Wow, that\'s big!!');
     }
 
-    document.write('<br>');
+    document.write('</p>')
 }
 
 
