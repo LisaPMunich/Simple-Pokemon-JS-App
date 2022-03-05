@@ -44,7 +44,10 @@ let pokemonRepository =(function() {
 
 
     function add(item){
-        pokemonList.push(item);
+        if(typeof (item==={}) &&
+        Object.keys(item)=='name', 'height', 'age') {
+            pokemonList.push(item);
+        } else {}
     }
 
     function getAll(){
