@@ -33,43 +33,71 @@
 // printArrayDetails();
 //
 
-let pokemonRepository =(function() {
+let pokemonRepository = (function () {
 
-    let pokemonList = [
+    let repository = [
         {name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']},
         {name: 'Charmander', height: 0.6, types: 'fire'},
         {name: 'Pikachu', height: 0.4, types: 'electric'},
         {name: 'Ponyta', height: 1, types: 'fire'}
     ];
 
-
-    function add(item){
-        if(typeof (item==={}) &&
-        Object.keys(item)=='name', 'height', 'age') {
-            pokemonList.push(item);
-        } else {}
+    function getAll() {
+        return repository;
     }
 
-    function getAll(){
-        return pokemonList;
+    function add(pokemon) {
+
+        if
+        (typeof pokemon === 'object'
+            && typeof pokemon.name !== 'undefined'
+            && typeof pokemon.height !== 'undefined'
+            && typeof pokemon.types !== 'undefined'
+        ) {
+            repository.push(pokemon);
+        } else {
+            console.log('Pokemon does not fit conditions')
+        }
     }
 
-    return{
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let pokemonList__item = document.createElement('li');
+        let button = document.createElement('button');
+
+        //appends button with pokemon name to ul
+        button.innerText = pokemon.name;
+        button.classList.add('button');
+        pokemonList__item.appendChild(button);
+        pokemonList.appendChild(pokemonList__item);
+
+        //if 'click' occurs on button, then event is executed
+        button.addEventListener('click', function showDetails(event) {
+                console.log(pokemon.name, event);
+            }
+        )
+    }
+
+    function showDetails(pokemon) {
+        console.log(pokemon)
+    }
+
+    return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem
     }
 
 })();
 
 pokemonRepository.getAll();
-pokemonRepository.add({name:'Squirtle', height: 0.5, types: 'water'});
+pokemonRepository.add({name: 'Squirtle', height: 0.5, types: 'water'});
+
+
+// Test that a wrong pokemon is NOT added.
+pokemonRepository.add({name: 'Fake Squirtle', types: 'water'});
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-    document.write(
-        `<div>
-            <h1>${pokemon.name}</h1> 
-            <p>height: ${pokemon.height} m</p> 
-            <p>types: ${pokemon.types} </p> 
-            </div>`
-    )
+    pokemonRepository.addListItem(pokemon);
+
 });
