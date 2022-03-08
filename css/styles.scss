@@ -106,12 +106,39 @@ h1 {
 // MAIN
 //=============================
 
-.pokemon-name {
-    font-weight: bold;
+li {
+    list-style-type: none;
 }
 
-/* .pokemon-overview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-} */
+.button {
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+
+    /* overwrites browser defaults and resets the border */
+    border: none;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    color: #010101;
+    background-color: $pikachu-yellow;
+
+    /* takes the font from the outer container */
+    font-family: inherit;
+    font-size: 25px;
+    text-decoration: none;
+    transition: 1s opacity;
+    margin-bottom: 10px;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+    /* lets the mouse appear as a hand when hovering over the button */
+    cursor: pointer;
+
+    /* reduces the opacity of the button to 80% */
+    opacity: 0.8;
+}
