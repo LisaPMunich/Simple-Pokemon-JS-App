@@ -1,63 +1,23 @@
 "use strict";
 
-//
-// let pokemonList = [
-//     {name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']},
-//     {name: 'Charmander', height: 0.6, types: 'fire'},
-//     {name: 'Pikachu', height: 0.4, types: 'electric'},
-//     {name: 'Ponyta', height: 1, types: 'fire'},
-// ];
-//
-// //DISPLAY NAME AND HEIGHT OF POKEMONS IN DOM
-// function printArrayDetails () {
-//     for (let i = 0; i < pokemonList.length; i++) {
-//         document.write('<p>' + pokemonList[i].name)
-//
-//         if (pokemonList[i].height){
-//             document.write(' (height: ' + (pokemonList[i].height) + 'm)')
-//         }
-//
-//         if (pokemonList[i].height > 0.8) {
-//             document.write(' => Wow, that\'s big!!');
-//         }
-//
-//         document.write('</p>')
-//     }
-// }
-//
-// printArrayDetails();
-// printArrayDetails();
-// printArrayDetails();
-// printArrayDetails();
-// printArrayDetails();
-// printArrayDetails();
-//
-
 let pokemonRepository = (function () {
+    let PokemonList = [];
 
-    let repository = [
-        {name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']},
-        {name: 'Charmander', height: 0.6, types: 'fire'},
-        {name: 'Pikachu', height: 0.4, types: 'electric'},
-        {name: 'Ponyta', height: 1, types: 'fire'}
-    ];
-
-    function getAll() {
-        return repository;
-    }
 
     function add(pokemon) {
-
         if
         (typeof pokemon === 'object'
             && typeof pokemon.name !== 'undefined'
-            && typeof pokemon.height !== 'undefined'
-            && typeof pokemon.types !== 'undefined'
+            && typeof pokemon.detailsUrl !== 'undefined'
         ) {
-            repository.push(pokemon);
+            PokemonList.push(pokemon);
         } else {
-            console.log('Pokemon does not fit conditions')
+            console.log('Pokemon does not fit conditions');
         }
+    }
+
+    function getAll() {
+        return PokemonList;
     }
 
     function addListItem(pokemon) {
@@ -72,32 +32,65 @@ let pokemonRepository = (function () {
         pokemonList.appendChild(pokemonList__item);
 
         //if 'click' occurs on button, then event is executed
-        button.addEventListener('click', function showDetails(event) {
-                console.log(pokemon.name, event);
+        button.addEventListener('click', function () {
+                showDetails(pokemon);
             }
         )
     }
 
+
+    function loadList() {
+        //show Loading Message, hide when loaded
+        let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
+        return fetch(apiURL)
+            .then(response => response.json())
+            .then(json => {
+                let dataFromAPI = json.results;
+
+                dataFromAPI.forEach(entry => {
+                    let pokemon = {
+                        name: entry.name,
+                        detailsUrl: entry.url
+                    };
+                    add(pokemon);
+                    console.log(pokemon);
+                })
+            })
+            .catch(e => console.error(e))
+    }
+
+    function loadDetails(pokemon) {
+        let url = pokemon.detailsUrl;
+        return fetch(url)
+            .then(response => response.json())
+            .then(details => {
+                pokemon.imageUrl = details.sprites.front_default;
+                pokemon.height = details.height;
+                pokemon.types = details.types;
+                console.log(pokemon);
+            })
+            .catch(e => console.error(e));
+    }
+
     function showDetails(pokemon) {
-        console.log(pokemon)
+        loadDetails(pokemon).then(() => console.log(item))
     }
 
     return {
-        getAll: getAll,
         add: add,
-        addListItem: addListItem
+        getAll: getAll,
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails
     }
-
 })();
 
-pokemonRepository.getAll();
-pokemonRepository.add({name: 'Squirtle', height: 0.5, types: 'water'});
 
-
-// Test that a wrong pokemon is NOT added.
-pokemonRepository.add({name: 'Fake Squirtle', types: 'water'});
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
-
-});
+pokemonRepository
+    .loadList()
+    .then(() =>
+        pokemonRepository
+            .getAll()
+            .forEach(pokemon => pokemonRepository.addListItem(pokemon))
+    );
