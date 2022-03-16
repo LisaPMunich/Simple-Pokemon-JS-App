@@ -73,9 +73,48 @@ h1 {
   flex-direction: row;
   flex-grow: 1;
   height: 80px;
+  width: auto;
   justify-content: flex-start;
   list-style-type: none;
   padding-left: 20px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 50%;
+  padding: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.standard-label {
+  padding: 2px 2px 2px 15px;
+}
+
+.form-button {
+  align-items: center;
+  margin-left: 15px;
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  background-color: lightgrey;
+}
+
+#username-error,
+#password-error {
+  color: #010101;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-shadow: none;
+  text-align: end;
+  padding-top: 4px;
 }
 
 li {
@@ -122,7 +161,9 @@ button:focus,
   background: rgba(0, 0, 0, 0.5);
   /* to show it above other content */
   z-index: 500;
-  /* to allow scrolling if the screen is not high enough*/
+  /*
+  to allow scrolling if the screen is not high enough
+  */
   overflow: auto;
 }
 
@@ -138,7 +179,7 @@ button:focus,
   border: 1px solid black;
   border-radius: 10px;
   z-index: 1000;
-  background: #fff;
+  background: #FFF;
   width: 80%;
   max-width: 500px;
   padding: 10px 15px;
