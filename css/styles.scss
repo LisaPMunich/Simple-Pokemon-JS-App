@@ -28,11 +28,7 @@ body {
 }
 
 body {
-    background-color: $white;
-    color: $main-text;
     font-family: "Orbitron", sans-serif;
-    font-size: 18px;
-    font-weight: $font-light;
     line-height: 1.6;
     padding-left: 20px;
 }
@@ -68,6 +64,7 @@ h1 {
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 0;
+    padding-left: 20px;
 }
 
 //=============================
@@ -77,13 +74,6 @@ h1 {
 .logo {
     height: 80px;
     margin-bottom: 0;
-}
-
-.page-header__logo-item {
-    display: flex;
-    flex-direction: row;
-    height: 80px;
-    justify-content: flex-start;
 }
 
 .navbar-brand {
@@ -97,46 +87,6 @@ h1 {
     list-style-type: none;
     padding-left: 20px;
 }
-
-//// LOGIN FORM
-//
-//#login-form {
-//    display: flex;
-//    flex-direction: row;
-//    justify-content: flex-end;
-//    align-items: flex-start;
-//    width: 50%;
-//    padding: 10px;
-//    font-family: "Orbitron", sans-serif;
-//    font-size: 18px;
-//    font-weight: $font-light;
-//}
-//
-//.standard-label {
-//    padding: 2px 2px 2px 15px;
-//}
-//
-//.form-button {
-//    align-items: center;
-//    margin-left: 15px;
-//    padding: 3px 10px;
-//    font-family: inherit;
-//    font-size: 16px;
-//    border: none;
-//    border-radius: 3px;
-//    background-color: lightgrey;
-//}
-//
-//#username-error,
-//#password-error {
-//    color: #010101;
-//    font-family: "Helvetica Neue", sans-serif;
-//    font-size: 12px;
-//    font-weight: $font-light;
-//    text-shadow: none;
-//    text-align: end;
-//    padding-top: 4px;
-//}
 
 //=============================
 // MAIN
@@ -214,5 +164,45 @@ h1 {
 }
 
 .modal-body {
-    padding: 10px 15px;
+    padding: 20px 15px;
 }
+
+//// LOGIN FORM
+//
+//#login-form {
+//    display: flex;
+//    flex-direction: row;
+//    justify-content: flex-end;
+//    align-items: flex-start;
+//    width: 50%;
+//    padding: 10px;
+//    font-family: "Orbitron", sans-serif;
+//    font-size: 18px;
+//    font-weight: $font-light;
+//}
+//
+//.standard-label {
+//    padding: 2px 2px 2px 15px;
+//}
+//
+//.form-button {
+//    align-items: center;
+//    margin-left: 15px;
+//    padding: 3px 10px;
+//    font-family: inherit;
+//    font-size: 16px;
+//    border: none;
+//    border-radius: 3px;
+//    background-color: lightgrey;
+//}
+//
+//#username-error,
+//#password-error {
+//    color: #010101;
+//    font-family: "Helvetica Neue", sans-serif;
+//    font-size: 12px;
+//    font-weight: $font-light;
+//    text-shadow: none;
+//    text-align: end;
+//    padding-top: 4px;
+//}

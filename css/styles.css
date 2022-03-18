@@ -9,11 +9,7 @@ body {
 }
 
 body {
-  background-color: #FFF;
-  color: #010101;
   font-family: "Orbitron", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
   line-height: 1.6;
   padding-left: 20px;
 }
@@ -48,18 +44,12 @@ h1 {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 0;
+  padding-left: 20px;
 }
 
 .logo {
   height: 80px;
   margin-bottom: 0;
-}
-
-.page-header__logo-item {
-  display: flex;
-  flex-direction: row;
-  height: 80px;
-  justify-content: flex-start;
 }
 
 .navbar-brand {
@@ -131,7 +121,7 @@ h1 {
 }
 
 .modal-body {
-  padding: 10px 15px;
+  padding: 20px 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */
