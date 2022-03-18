@@ -64,16 +64,10 @@ body {
     }
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    padding-top: 140px;
-}
-
 h1 {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 //=============================
@@ -92,97 +86,74 @@ h1 {
     justify-content: flex-start;
 }
 
-.page-header__nav-item {
+.navbar-brand {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
     height: 80px;
     width: auto;
     justify-content: flex-start;
+    align-items: center;
     list-style-type: none;
     padding-left: 20px;
 }
 
-// LOGIN FORM
-
-#login-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: 50%;
-    padding: 10px;
-    font-family: "Orbitron", sans-serif;
-    font-size: 18px;
-    font-weight: $font-light;
-}
-
-.standard-label {
-    padding: 2px 2px 2px 15px;
-}
-
-.form-button {
-    align-items: center;
-    margin-left: 15px;
-    padding: 3px 10px;
-    font-family: inherit;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-    background-color: lightgrey;
-}
-
-#username-error,
-#password-error {
-    color: #010101;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 12px;
-    font-weight: $font-light;
-    text-shadow: none;
-    text-align: end;
-    padding-top: 4px;
-}
-
+//// LOGIN FORM
+//
+//#login-form {
+//    display: flex;
+//    flex-direction: row;
+//    justify-content: flex-end;
+//    align-items: flex-start;
+//    width: 50%;
+//    padding: 10px;
+//    font-family: "Orbitron", sans-serif;
+//    font-size: 18px;
+//    font-weight: $font-light;
+//}
+//
+//.standard-label {
+//    padding: 2px 2px 2px 15px;
+//}
+//
+//.form-button {
+//    align-items: center;
+//    margin-left: 15px;
+//    padding: 3px 10px;
+//    font-family: inherit;
+//    font-size: 16px;
+//    border: none;
+//    border-radius: 3px;
+//    background-color: lightgrey;
+//}
+//
+//#username-error,
+//#password-error {
+//    color: #010101;
+//    font-family: "Helvetica Neue", sans-serif;
+//    font-size: 12px;
+//    font-weight: $font-light;
+//    text-shadow: none;
+//    text-align: end;
+//    padding-top: 4px;
+//}
 
 //=============================
 // MAIN
 //=============================
 
-li {
-    list-style-type: none;
+// POKEMON LIST
+//=============================
+
+.row {
+    padding-top: 150px;
 }
 
-.button {
-    display: block;
-    height: 50px;
-    width: 100%;
-    padding: 10px;
-
-    /* overwrites browser defaults and resets the border */
-    border: none;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    color: #010101;
+.pokemon-list-column {
     background-color: $pikachu-yellow;
-
-    /* takes the font from the outer container */
-    font-family: inherit;
-    font-size: 25px;
-    text-decoration: none;
-    transition: 1s opacity;
-    margin-bottom: 10px;
-}
-
-button:hover,
-button:focus,
-.button:hover,
-.button:focus {
-    /* lets the mouse appear as a hand when hovering over the button */
-    cursor: pointer;
-
-    /* reduces the opacity of the button to 80% */
-    opacity: 0.8;
+    padding: 30px;
+    border-bottom-right-radius: 20px;
+    border: solid white 6px;
 }
 
 // MODAL
@@ -210,12 +181,12 @@ button:focus,
     display: block;
 }
 
-.modal {
+.modal-dialog {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid black;
+    //border: 1px solid black;
     border-radius: 10px;
     z-index: 1000;
     background: #FFF;
@@ -224,22 +195,22 @@ button:focus,
     padding: 10px 15px;
 }
 
+.modal-content {
+    border: none;
+}
+
 .modal-header {
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-bottom: 2px solid $pokemon-ball-red;
 }
 
 .modal-close {
     cursor: pointer;
-    border: 0;
-    background: none;
-    color: #777;
-    text-decoration: none;
-    font-size: 1.25rem;
-    font-weight: bold;
+    //border: 0;
+    //background: none;
+    //color: #777;
+    //text-decoration: none;
+    //font-size: 1.25rem;
+    //font-weight: bold;
 }
 
 .modal-body {

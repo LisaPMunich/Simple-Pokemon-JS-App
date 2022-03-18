@@ -18,20 +18,22 @@ let pokemonRepository = (function () {
     }
 
     function addListItem(pokemon) {
-        let pokemonList = document.querySelector(".pokemon-list");
-        let pokemonList__item = document.createElement("li");
-        let button = document.createElement("button");
+        let pokemonList = $('.row');
+        let template = $(`
+              <div class="col-sm-6 col-lg-4 pokemon-list-column">
+                  <h2 class="pokemon-list-column__title">${pokemon.name}</h2>
+                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-dialog" aria-label="close">show  details</button>
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" class="modal-img" style="width:50%" alt="responsive image" aria-label="image of ${pokemon.name}">
+              </div>`);
 
-        //appends button with pokemon name to ul
-        button.innerText = pokemon.name;
-        button.classList.add("button");
-        pokemonList__item.appendChild(button);
-        pokemonList.appendChild(pokemonList__item);
+        let button = template.find('button');
 
         //if 'click' occurs on button, then event is executed
-        button.addEventListener("click", function () {
+        $(button).on('click', function () {
             showDetails(pokemon);
         });
+
+        pokemonList.append(template);
     }
 
     function loadList() {
@@ -42,8 +44,9 @@ let pokemonRepository = (function () {
             .then((json) => {
                 let dataFromAPI = json.results;
 
-                dataFromAPI.forEach((entry) => {
+                dataFromAPI.forEach((entry,i) => {
                     let pokemon = {
+                        id: i+1,
                         name: entry.name,
                         detailsUrl: entry.url,
                     };
@@ -86,8 +89,7 @@ let pokemonRepository = (function () {
 // ADD MODAL TO SHOW DETAILS OF POKEMON, WHEN BUTTON IS CLICKED
 
 let pokemonModal = (function () {
-    let openModalButton = document.querySelector("#modal-open");
-    let modalContainer = document.querySelector("#modal-container");
+    let modalContainer = document.querySelector('#modal-container');
 
     // SHOW MODAL
     function showModal(title, pokemon) {
@@ -97,33 +99,37 @@ let pokemonModal = (function () {
         console.log(pokemon);
 
         //adding all tags and content back in the modal container
-        let modalElement = document.createElement("div");
-        modalElement.classList.add("modal");
+        let modalElement = document.createElement('div');
+        modalElement.classList.add('modal-dialog');
         modalContainer.append(modalElement);
 
-        let modalHeaderElement = document.createElement("div");
-        modalHeaderElement.classList.add("modal-header");
-        modalElement.append(modalHeaderElement);
+        let modalContentElement = document.createElement('div');
+        modalContentElement.classList.add('modal-content');
+        modalElement.append(modalContentElement);
 
-        let titleElement = document.createElement("h3");
-        titleElement.classList.add("#modal-open");
+        let modalHeaderElement = document.createElement('div');
+        modalHeaderElement.classList.add('modal-header');
+        modalContentElement.append(modalHeaderElement);
+
+        let titleElement = document.createElement('h3');
+        titleElement.classList.add('modal-title');
         titleElement.innerText = title;
         modalHeaderElement.append(titleElement);
 
-        let closeButtonElement = document.createElement("button");
-        closeButtonElement.classList.add("modal-close");
-        closeButtonElement.innerHTML = "&times;";
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('btn');
+        closeButtonElement.innerHTML = '&times;';
         modalHeaderElement.append(closeButtonElement);
 
-        let modalBodyElement = document.createElement("div");
-        modalBodyElement.classList.add("modal-body");
-        modalElement.append(modalBodyElement);
+        let modalBodyElement = document.createElement('div');
+        modalBodyElement.classList.add('modal-body');
+        modalContentElement.append(modalBodyElement);
 
-        let modalParagraph1 = document.createElement("p");
+        let modalParagraph1 = document.createElement('p');
         modalParagraph1.innerText = `height: ${pokemon.height / 10}m`;
         modalBodyElement.append(modalParagraph1);
 
-        let modalParagraph2 = document.createElement("p");
+        let modalParagraph2 = document.createElement('p');
         let pokemonTypeList = pokemon.types[0].type.name;
         if (pokemon.types[1]) {
             pokemonTypeList += ", " + pokemon.types[1].type.name;
@@ -131,41 +137,42 @@ let pokemonModal = (function () {
         modalParagraph2.innerText = `types: ${pokemonTypeList}`;
         modalBodyElement.append(modalParagraph2);
 
-        let modalImage = document.createElement("img");
-        modalImage.setAttribute("src", pokemon.imageUrl);
-        let imageSize = "200px";
+        let modalImage = document.createElement('img');
+        modalImage.setAttribute('src', pokemon.imageUrl);
+        let imageSize = '300px';
         modalImage.setAttribute(
-            "style",
+            'style',
             `height: ${imageSize}; width: ${imageSize}`
         );
         modalBodyElement.append(modalImage);
 
         // making modal visible again
-        modalContainer.classList.add("is-visible");
+        modalContainer.classList.add('is-visible');
 
-        closeButtonElement.addEventListener("click", hideModal);
+        closeButtonElement.addEventListener('click', hideModal);
     }
 
     // HIDE MODAL
     function hideModal() {
-        modalContainer.classList.remove("is-visible");
+        modalContainer.classList.remove('is-visible');
     }
 
     // ADDING EVENT LISTENER to show and close Modal
-    openModalButton.addEventListener("click", () => {
+
+    $('.btn.btn-light').on('click', () => {
         showModal();
     });
 
-    window.addEventListener("keydown", (event) => {
+    window.addEventListener('keydown', (event) => {
         if (
-            event.key === "Escape" &&
-            modalContainer.classList.contains("is-visible")
+            event.key === 'Escape' &&
+            modalContainer.classList.contains('is-visible')
         ) {
             hideModal();
         }
     });
 
-    modalContainer.addEventListener("click", (event) => {
+    modalContainer.addEventListener('click', (event) => {
         if (event.target === modalContainer) {
             hideModal();
         }
@@ -187,61 +194,61 @@ pokemonRepository
 
 // FORM VALIDATION LOGIN FORM IN HEADER
 
-(function () {
-    let form = document.querySelector('#login-form');
-    let userNameInput = document.querySelector('#username');
-    let passwordInput = document.querySelector('#password');
-    let userNameErrorElement = document.querySelector('#username-error');
-    let passwordErrorElement = document.querySelector('#password-error');
+// (function () {
+//     let form = document.querySelector('#login-form');
+//     let userNameInput = document.querySelector('#username');
+//     let passwordInput = document.querySelector('#password');
+//     let userNameErrorElement = document.querySelector('#username-error');
+//     let passwordErrorElement = document.querySelector('#password-error');
+//
+//     function validateUserName() {
+//         if (userNameInput.value === '') {
+//             userNameErrorElement.innerText = 'Please type in your name';
+//             return false
+//         }
+//         userNameErrorElement.innerText = '';
+//         return true
+//     }
+//
+//     function validatePassword(){
+//         if (passwordInput.value === 'password'){
+//             passwordErrorElement.innerText ='Password cannot be password';
+//             return false
+//         }
+//
+//         if (passwordInput.value ===''){
+//             passwordErrorElement.innerText ='Please type in your password';
+//             return false
+//         }
+//
+//         if (passwordInput.value.length < 8) {
+//             passwordErrorElement.innerText ='Password is less than 8 characters';
+//             return false
+//         }
+//         passwordErrorElement.innerText ='';
+//         return true;
+//     }
+//
+//     function validateForm(){
+//     let isValidUserName = validateUserName();
+//     let isValidPassword = validatePassword();
+//     return isValidUserName && isValidPassword;
+//     }
+//
+//     function formHasError() {
+//         if (userNameErrorElement.innerText.length > 0 || passwordErrorElement.innerText.length > 0) {
+//             return false
+//         }
+//         return true
+//     }
+//
+//     userNameInput.addEventListener('input', validateUserName);
+//     passwordInput.addEventListener('input', validatePassword);
+//     form.addEventListener('submit',(event)=>{
+//         validateForm();
+//         if(formHasError()){
+//             event.preventDefault();
+//         }
+//     })
 
-    function validateUserName() {
-        if (userNameInput.value === '') {
-            userNameErrorElement.innerText = 'Please type in your name';
-            return false
-        }
-        userNameErrorElement.innerText = '';
-        return true
-    }
-
-    function validatePassword(){
-        if (passwordInput.value === 'password'){
-            passwordErrorElement.innerText ='Password cannot be password';
-            return false
-        }
-
-        if (passwordInput.value ===''){
-            passwordErrorElement.innerText ='Please type in your password';
-            return false
-        }
-
-        if (passwordInput.value.length < 8) {
-            passwordErrorElement.innerText ='Password is less than 8 characters';
-            return false
-        }
-        passwordErrorElement.innerText ='';
-        return true;
-    }
-
-    function validateForm(){
-    let isValidUserName = validateUserName();
-    let isValidPassword = validatePassword();
-    return isValidUserName && isValidPassword;
-    }
-
-    function formHasError() {
-        if (userNameErrorElement.innerText.length > 0 || passwordErrorElement.innerText.length > 0) {
-            return false
-        }
-        return true
-    }
-
-    userNameInput.addEventListener('input', validateUserName);
-    passwordInput.addEventListener('input', validatePassword);
-    form.addEventListener('submit',(event)=>{
-        validateForm();
-        if(formHasError()){
-            event.preventDefault();
-        }
-    })
-
-})();
+// })();
