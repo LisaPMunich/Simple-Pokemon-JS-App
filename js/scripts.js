@@ -15,6 +15,7 @@ let pokemonRepository = (function () {
 
     function getAll() {
         return PokemonList;
+        console.log();
     }
 
     function addListItem(pokemon) {
@@ -38,7 +39,7 @@ let pokemonRepository = (function () {
 
     function loadList() {
         //show Loading Message, hide when loaded
-        let apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+        let apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=140";
         return fetch(apiURL)
             .then((response) => response.json())
             .then((json) => {
@@ -85,6 +86,25 @@ let pokemonRepository = (function () {
         showDetails: showDetails,
     };
 })();
+
+// ADD SEARCH BAR FOR POKEMON AND FILTER
+
+let pokemonList = $('.row');
+let searchBar = $('#searchBar');
+
+
+$('#searchBar').on('keyup', (event) => {
+    let searchString = event.target.value.toLowerCase();
+    let filteredCharacters = pokemonRepository.getAll().filter((pokemon)=> {
+        return pokemon.name.toLowerCase().includes(searchString)
+    });
+
+    $('.row').empty();
+
+    filteredCharacters.forEach((pokemon) =>
+        pokemonRepository.addListItem(pokemon))
+});
+
 
 // ADD MODAL TO SHOW DETAILS OF POKEMON, WHEN BUTTON IS CLICKED
 

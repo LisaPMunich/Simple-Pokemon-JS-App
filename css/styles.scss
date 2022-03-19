@@ -34,14 +34,17 @@ body {
 }
 
 .page-header {
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-wrap: wrap;
     background-color: $pokemon-ball-red;
     color: $white;
     font-weight: $font-bold;
     text-shadow: 0 1px $main-text;
     font-size: 20px;
-    overflow: hidden;
-    position: fixed;
-    display: flex;
     margin: 0 auto;
     width: 100%;
     min-width: 300px;
@@ -64,6 +67,7 @@ h1 {
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 0;
+    margin-top: 12px;
     padding-left: 20px;
 }
 
@@ -71,21 +75,47 @@ h1 {
 // HEADER
 //=============================
 
+nav {
+    flex-grow: 3;
+}
+
 .logo {
     height: 80px;
     margin-bottom: 0;
 }
 
 .navbar-brand {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
+    flex-grow: 2;
+    align-self: center;
     height: 80px;
     width: auto;
-    justify-content: flex-start;
-    align-items: center;
     list-style-type: none;
     padding-left: 20px;
+}
+
+.form-group {
+    flex-grow: 1;
+    align-self: center;
+    padding: 0 26px;
+    max-width: 300px;
+    margin-top: 16px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.has-search .form-control {
+    padding-right: 12px;
+    padding-left: 34px;
 }
 
 //=============================
@@ -166,43 +196,3 @@ h1 {
 .modal-body {
     padding: 20px 15px;
 }
-
-//// LOGIN FORM
-//
-//#login-form {
-//    display: flex;
-//    flex-direction: row;
-//    justify-content: flex-end;
-//    align-items: flex-start;
-//    width: 50%;
-//    padding: 10px;
-//    font-family: "Orbitron", sans-serif;
-//    font-size: 18px;
-//    font-weight: $font-light;
-//}
-//
-//.standard-label {
-//    padding: 2px 2px 2px 15px;
-//}
-//
-//.form-button {
-//    align-items: center;
-//    margin-left: 15px;
-//    padding: 3px 10px;
-//    font-family: inherit;
-//    font-size: 16px;
-//    border: none;
-//    border-radius: 3px;
-//    background-color: lightgrey;
-//}
-//
-//#username-error,
-//#password-error {
-//    color: #010101;
-//    font-family: "Helvetica Neue", sans-serif;
-//    font-size: 12px;
-//    font-weight: $font-light;
-//    text-shadow: none;
-//    text-align: end;
-//    padding-top: 4px;
-//}
