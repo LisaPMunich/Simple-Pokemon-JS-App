@@ -105,6 +105,16 @@ nav {
   border: solid white 6px;
 }
 
+@media all and (max-width: 570px) {
+  .row {
+    padding-top: 220px;
+  }
+}
+@media all and (min-width: 570px) and (max-width: 730px) {
+  .row {
+    padding-top: 220px;
+  }
+}
 #modal-container {
   display: none;
   position: fixed;
