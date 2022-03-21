@@ -39,7 +39,7 @@ let pokemonRepository = (function () {
 
     function loadList() {
         //show Loading Message, hide when loaded
-        let apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=140";
+        let apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
         return fetch(apiURL)
             .then((response) => response.json())
             .then((json) => {
