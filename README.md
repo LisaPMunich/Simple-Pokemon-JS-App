@@ -13,6 +13,6 @@ This app uses HTML, CSS, JavaScript, jQuery and Bootstrap elements. Data are loa
 * Search box: When typing in the name of a pokemon then the list item is filtered and displayed.
 
 ### Technical Requirements
-The Project follows the rules of ESLint, Prettier, Stylelint.
-The project uses an external API: https://pokeapi.co/api/v2/pokemon/?limit=150
-The app works in Chrome, Firefox, Safari, Edge, and Internet Explorer 11 (by incorporating Polyfills for fetch and promise)
+* The Project follows the rules of ESLint, Prettier, Stylelint.
+* The project uses an external API: https://pokeapi.co/api/v2/pokemon/?limit=150
+* The app works in Chrome, Firefox, Safari, Edge, and Internet Explorer 11 (by incorporating Polyfills for fetch and promise)
