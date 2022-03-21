@@ -6,13 +6,17 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "postcss": "^8.4.6",
+    "prettier": "^2.6.0",
     "stylelint": "^13",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-scss": "^4.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./js",
+    "prettier": "prettier ./js"
   },
   "repository": {
     "type": "git",

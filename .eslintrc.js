@@ -1,12 +1,16 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
+    extends: ["prettier"],
+    plugins: ["prettier"],
+    env: {
+        es6: true,
+        browser: true,
+        es2021: true,
     },
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
     },
-    "rules": {
-    }
-}
+    rules: {
+        "prettier/prettier": "error",
+    },
+};
