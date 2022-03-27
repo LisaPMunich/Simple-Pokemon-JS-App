@@ -38,8 +38,8 @@ This app was first written in HTML, SCSS and JavaScript (see Screenshot below). 
 * the API does not deliver any explicit ID for each pokemon. Since the items are delivered in a certain order, it is possible to get the images with a forEach on datafromAPI. 
 
 # Step-by-step: How to run the app locally
-1. On GitHub.com, navigate to the main page of the repository.
-2. Above the list of files, click  Code.
+1. First clone the file. For instructions, how to clone a github repository, [click here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+2. 
 
 # Use it Live
 
