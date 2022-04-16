@@ -74,7 +74,7 @@ nav {
   align-self: center;
   padding: 0 26px;
   max-width: 300px;
-  margin-top: 16px;
+  margin-bottom: 0px;
 }
 
 .has-search .form-control-feedback {
@@ -105,12 +105,7 @@ nav {
   border: solid white 6px;
 }
 
-@media all and (max-width: 570px) {
-  .row {
-    padding-top: 220px;
-  }
-}
-@media all and (min-width: 570px) and (max-width: 730px) {
+@media all and (max-width: 733px) {
   .row {
     padding-top: 220px;
   }
