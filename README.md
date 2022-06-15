@@ -3,7 +3,7 @@
 
 
 ## Project Description
-This app was developed as part of the CareerFoundry Full-Stack Web Development Course. In this project I used JavaScript to build a simple client-side application that can communicate with an external API. This responsive app displays a list of 150 Pokemon from the database. The user can search Pokemon by name and click on each Pokemon to open a modal with more information on height and types as well as an image.
+In this project I used JavaScript to build a simple client-side application that can communicate with an external API. This responsive app displays a list of 150 Pokemon from the database. The user can search Pokemon by name and click on each Pokemon to open a modal with more information on height and types as well as an image.
 The objective of this project was to get experience in integrating the data from an external third-party API as well as seeing the advantages of using vanilla JavaScript as well as Bootstrap classes.
 
 <img src="https://user-images.githubusercontent.com/99111208/159686389-aea96071-2a7c-42c0-823c-7ecb15a68ce2.gif" width="600">
