@@ -1,4 +1,6 @@
 # Building a Simple Pokedex App
+![visitor badge](https://visitor-badge.glitch.me/badge?page_id=LisaPMunich.visitor-badge)
+
 <img src="https://user-images.githubusercontent.com/99111208/159686419-2254c8da-48d9-4d5b-97a9-82b455de1995.gif" width="600">
 
 
